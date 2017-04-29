@@ -14,12 +14,16 @@ module.exports = {
 }
 
 // TODO new code still in work - saving this here until I can get home and finish refactoring
+// TODO rename this something like handle_input, and include here something like do_functionality
 
 Exact_input = {
   'help': getHelp(),
   'my hero': getMyHero(),
-  'brett likes men': getMyHero(),
+  'mh': getMyHero(),
+  'brett likes men': brettLikesMen(),
+  'brett loves dicks': brettLikesMen(),
   'weenis': getEggplant(),
+  'my weenis': getEggplant(),
 };
 
 contains_all = {
@@ -28,9 +32,9 @@ contains_all = {
     'men'
   ]: brettLikesMen(),
   [
-    "str",
-    "test",
-  ]: doesNotExist(),
+    'our',
+    'heros',
+  ]: getOurHeros(),
 };
 
 function handle_message(msg) {
@@ -57,6 +61,7 @@ function handle_contains_all(msgl) {
     var elems = entry.key();
     var to_call = entry.value();
     var matches = true;
+    
     for elem in elems {
       if !msgl.contains(elem) {
         matches = false;
@@ -64,7 +69,7 @@ function handle_contains_all(msgl) {
       }
     }
     if matches {
-      return to_call();
+      return to_call(msgl);
     }
   }
   return null;
