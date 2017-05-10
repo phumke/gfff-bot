@@ -32,7 +32,8 @@ client.on('message', message => {
     } else if (isNaN(count) && content.split(' ').length <= 3) {
       message.reply('Please include a count, like our 3 heros');
     }
-  } else if (content.startsWith(input.OH)) {
+  } else if (content.startsWith(input.OH) &&
+            content !== input.OH) {
     var count = parseInt(content[2]);
     if (!isNaN(count)) {
       message.reply(getRandomHeros(count).join(', '));
