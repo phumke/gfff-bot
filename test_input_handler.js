@@ -3,15 +3,21 @@ const assert = require('assert');
 
 // TODO convert this to use mocha.js framework and sinon.js
 
-test_mh_string = function() {
-  var output = input.handle_message('mh');
-  assert(output);
-  assert(output.length > 1);
-}
-
-test_weenis_string = function() {
+test_exact_string = function() {
   var output = input.handle_message('weenis');
   assert(output === ':eggplant:');
+}
+
+test_include_all_string = function() {
+  var output = input.handle_message('brett loves men');
+  assert(output);
+  assert(output.includes('(Always)'));
+}
+
+test_regex_string = function() {
+  var output = input.handle_message('our 3 heros');
+  assert(output);
+  assert(output.includes(','));
 }
 
 test_unknown_string = function() {
@@ -19,12 +25,7 @@ test_unknown_string = function() {
   assert(output === '');
 }
 
-test_input_string = function() {
-  var output = input.handle_message('@Ubercode, :eggplant:');
-  assert(output === '');
-}
-
-test_mh_string();
-test_weenis_string();
+test_exact_string();
+test_include_all_string();
+test_regex_string();
 test_unknown_string();
-test_input_string();

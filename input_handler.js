@@ -1,15 +1,14 @@
-// TODO new code still in work - saving this here until I can get home and finish refactoring
 // TODO make these all regex and pass the matched regex along with the msg to the functions - in order to reduce rerunning duplicate code - hower this could be more expensive if everything is regex
-// TODO modify the exports to only export the handle message routineg
+// TODO switch all for (elem in elems) to elems.forEach() notation
 
 handle_message = function(msg) {
   var msgl = msg.toLowerCase();
   var retval = '';
 
   retval = handle_exact_input(msgl);
-  // if (!retval) {
-  //   retval = handle_contains_all(msgl);
-  // }
+  if (!retval) {
+    retval = handle_contains_all(msgl);
+  }
   if (!retval) {
     retval = handle_regex(msgl);
   }
@@ -27,16 +26,16 @@ handle_exact_input = function(msgl) {
 
 handle_contains_all = function(msgl) {
   for (entry in contains_all) {
-    var elems = entry.key();
-    var to_call = entry.value();
+    var matchable_elems = contains_all[entry].terms;
+    var to_call = contains_all[entry].fn;
     var matches = true;
 
-    for (elem in elems) {
-      if (!msgl.contains(elem)) {
+    matchable_elems.forEach(function callback(elem, index, array) {
+      if (matches && !msgl.includes(elem)) {
         matches = false;
-        break;
       }
-    }
+    });
+
     if (matches) {
       return to_call(msgl);
     }
@@ -71,7 +70,7 @@ getOurHeros = function(msg) {
     count = parseInt(msg.split(' ')[1]);
   }
 
-  return getRandomHeros(count);
+  return getRandomHeros(count).join(', ');
 };
 
 getMyHero = function(msg) {
@@ -120,20 +119,20 @@ var exact_input = {
   'weenis': getEggplant,
   'my weenis': getEggplant,
 };
-//
-// var contains_all = {
-//   [
-//     'brett',
-//     'men',
-//   ]: brettLikesMen(),
-//   [
-//     'our',
-//     'heros',
-//   ]: getOurHeros(),
-// };
+
+var contains_all = {
+  brettLikesMen: {
+    terms: [
+      'brett',
+      'men',
+    ],
+    fn: brettLikesMen
+  },
+};
 
 var input_regex = {
   'oh[1-6]': getOurHeros,
+  'our [1-6] heros': getOurHeros,
 };
 
 
