@@ -25,6 +25,12 @@ test_unknown_string = function() {
   assert(output === '');
 }
 
+test_return_promise = function() {
+  var output = input.handle_message('ranks');
+  assert(typeof output.then === 'function');
+}
+
+test_return_promise();
 test_exact_string();
 test_include_all_string();
 test_regex_string();
