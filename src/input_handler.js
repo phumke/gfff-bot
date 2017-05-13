@@ -1,9 +1,13 @@
 // TODO make these all regex and pass the matched regex along with the msg to the functions - in order to reduce rerunning duplicate code - hower this could be more expensive if everything is regex
 // TODO switch all for (elem in elems) to elems.forEach() notation
+// TODO add newlines to help response
+// TODO add link to OW so you can query your and others ranks
 
 handle_message = function(msg) {
   var msgl = msg.toLowerCase();
   var retval = '';
+
+  console.log(msgl);
 
   retval = handle_exact_input(msgl);
   if (!retval) {

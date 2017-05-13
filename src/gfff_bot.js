@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const token = require('./chat_token.js');
+const token = require('../conf/chat_token.js');
 const input = require('./input_handler.js');
 
 const client = new Discord.Client();
