@@ -1,4 +1,4 @@
-const input = require('./input_handler.js');
+const input = require('../src/input_handler.js');
 const assert = require('assert');
 
 // TODO convert this to use mocha.js framework and sinon.js

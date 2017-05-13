@@ -12,6 +12,10 @@ client.on('ready', () => {
 client.on('message', message => {
   var output = input.handle_message(message.content);
   if (output) {
-    message.reply(output);
+    if (typeof output.then === 'function') {
+      output.then(val => message.reply(val));
+    } else {
+      message.reply(output);
+    }
   }
 });
