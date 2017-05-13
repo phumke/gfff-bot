@@ -8,7 +8,7 @@ get_human_readable_ranks = function() {
     sorted.forEach(value => {
       printable_lines.push(value.rank + ' -> ' + value.user);
     });
-    return printable_lines.join('\n');
+    return 'Ranks:\n' + printable_lines.join('\n');
   });
 };
 
