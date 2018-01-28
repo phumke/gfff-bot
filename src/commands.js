@@ -1,4 +1,6 @@
 
+
+
 // TODO refactor to put this into the main_functionality.js file
 
 getHelp = function(msg) {
@@ -53,3 +55,22 @@ getRandomHeros = function(count) {
 chooseRandom = function(items) {
   return items[Math.round(Math.random() * (items.length - 1))];
 };
+
+getRandomHealer = function() {
+  var herolist = ['Ana', 'Lucio', 'Mercy', 'Zenyatta', 'Moria'];
+  return chooseRandom(herolist);
+};
+
+getRandomTank = function() {
+  var herolist = ['D.Va', 'Orisa', 'Reinhardt', 'Roadhog', 'Winston', 'Zarya'];
+  return chooseRandom(herolist);
+};
+
+getRandomDPS = function() {
+  var herolist = ['Genji', 'McCree', 'Pharah', 'Reaper', 'Soldier', 'Sombra', 'Tracer', 'Bastion', 'Hanzo', 'Junkrat', 'Mei', 'Torbjorn', 'Widowmaker', 'Doomfist', 'Symmetra'];
+  return chooseRandom(herolist);
+};
+
+getRandomTeam = function() {
+  return([getRandomHealer(), getRandomTank(), getRandomDPS(), getRandomDPS()].join(','));
+}
