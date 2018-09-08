@@ -1,7 +1,8 @@
-
-
-
 // TODO refactor to put this into the main_functionality.js file
+
+dpsHeros = ['Genji', 'McCree', 'Pharah', 'Reaper', 'Soldier', 'Sombra', 'Tracer', 'Bastion', 'Hanzo', 'Junkrat', 'Mei', 'Torbjorn', 'Widowmaker', 'Doomfist', 'Symmetra'];
+healerHeros = ['Ana', 'Lucio', 'Mercy', 'Zenyatta', 'Moria'];
+tankHeros = ['D.Va', 'Orisa', 'Reinhardt', 'Roadhog', 'Wrecking Ball', 'Winston', 'Zarya'];
 
 getHelp = function(msg) {
   return 'Commands: help, mh, my hero, brett likes men, brett loves dicks, our <count> heros, oh#';
@@ -34,7 +35,7 @@ brettLikesMen = function(msg) {
 // -------
 
 getRandomHero = function() {
-  var herolist = ['Genji', 'McCree', 'Pharah', 'Reaper', 'Soldier', 'Sombra', 'Tracer', 'Bastion', 'Hanzo', 'Junkrat', 'Mei', 'Torbjorn', 'Widowmaker', 'D.Va', 'Orisa', 'Reinhardt', 'Roadhog', 'Winston', 'Zarya', 'Ana', 'Lucio', 'Mercy', 'Symmetra', 'Zenyatta'];
+  var herolist = dpsHeros + healerHeros + tankHeros;
   return chooseRandom(herolist);
 };
 
@@ -57,20 +58,17 @@ chooseRandom = function(items) {
 };
 
 getRandomHealer = function() {
-  var herolist = ['Ana', 'Lucio', 'Mercy', 'Zenyatta', 'Moria'];
-  return chooseRandom(herolist);
+  return chooseRandom(healerHeros);
 };
 
 getRandomTank = function() {
-  var herolist = ['D.Va', 'Orisa', 'Reinhardt', 'Roadhog', 'Winston', 'Zarya'];
-  return chooseRandom(herolist);
+  return chooseRandom(tankHeros);
 };
 
 getRandomDPS = function() {
-  var herolist = ['Genji', 'McCree', 'Pharah', 'Reaper', 'Soldier', 'Sombra', 'Tracer', 'Bastion', 'Hanzo', 'Junkrat', 'Mei', 'Torbjorn', 'Widowmaker', 'Doomfist', 'Symmetra'];
-  return chooseRandom(herolist);
+  return chooseRandom(dpsHeros);
 };
 
 getRandomTeam = function() {
-  return([getRandomHealer(), getRandomTank(), getRandomDPS(), getRandomDPS()].join(','));
+  return([getRandomHealer(), getRandomTank(), getRandomDPS(), getRandomDPS()].join(', '));
 }
