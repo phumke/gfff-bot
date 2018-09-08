@@ -1,7 +1,7 @@
 // TODO refactor to put this into the main_functionality.js file
 
 dpsHeros = ['Genji', 'McCree', 'Pharah', 'Reaper', 'Soldier', 'Sombra', 'Tracer', 'Bastion', 'Hanzo', 'Junkrat', 'Mei', 'Torbjorn', 'Widowmaker', 'Doomfist', 'Symmetra'];
-healerHeros = ['Ana', 'Lucio', 'Mercy', 'Zenyatta', 'Moria'];
+healerHeros = ['Ana', 'Brigitte', 'Lucio', 'Mercy', 'Zenyatta', 'Moria'];
 tankHeros = ['D.Va', 'Orisa', 'Reinhardt', 'Roadhog', 'Wrecking Ball', 'Winston', 'Zarya'];
 
 getHelp = function(msg) {
